@@ -13,13 +13,19 @@ return new class extends Migration
     {
         Schema::create('soals', function (Blueprint $table) {
             $table->id();
-            $table->string('soal')->unique();
-            $table->string('jawaban')->nullable();
-            $table->string('pilihan_a');
-            $table->string('pilihan_b');
+            $table->string('pertanyaan');
 
-            // user_id foreign key
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // Kategori
+            $table->string('kategori');
+
+            // jawaban
+            $table->string('jawaban_a');
+            $table->string('jawaban_b');
+            $table->string('jawaban_c');
+            $table->string('jawaban_d');
+
+            // Kunci
+            $table->enum('kunci', ['a', 'b', 'c', 'd']);
             $table->timestamps();
         });
     }
